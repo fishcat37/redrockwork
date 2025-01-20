@@ -1,7 +1,6 @@
 package model
 
-type RegisterRequest struct {
+type User struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
-	token    string `json:"token"`
 }
