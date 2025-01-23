@@ -20,8 +20,8 @@ func Register(c *gin.Context) { //注册处理函数
 		c.JSON(http.StatusBadRequest, gin.H{"error": "用户名已存在"})
 		return
 	}
-	err := dao.AddUser(info)
-	if err != nil {
+	id, err := dao.AddUser(info)
+	if err != nil || id == 0 {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
 		return
 	}
@@ -29,5 +29,6 @@ func Register(c *gin.Context) { //注册处理函数
 		"status":  "10000",
 		"info":    "success",
 		"message": "注册成功",
+		"id":      id,
 	})
 }

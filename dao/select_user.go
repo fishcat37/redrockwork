@@ -5,9 +5,9 @@ import (
 )
 
 func SelecrUser(name string) bool { //查询用户是否存在
-	DB := Init()
+	db := Init()
 	var user model.User
-	DB.Table("redrock").Where("username=?", name).Find(&user)
+	db.Table("redrock").Where("username=?", name).Find(&user)
 	if user.Username == name {
 		return true
 	}

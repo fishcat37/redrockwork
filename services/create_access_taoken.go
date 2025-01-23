@@ -1,13 +1,14 @@
 package services
 
 import (
+	"redrockCommerce/config"
 	"redrockCommerce/model"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
 )
 
-var JwtSecret = []byte("redrock")
+var JwtSecret = []byte(config.JwtSecretKey)
 
 func CreateAccessToken(user model.User) (string, error) {
 	claims := model.CustomClaims{
